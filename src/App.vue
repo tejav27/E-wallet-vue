@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Home @changeView="currentView='addcard'" v-if="currentView=='home'"/>
+    <AddCard @changeView="currentView='home'" v-if="currentView=='addcard'"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import Home from './views/Home.vue'
+import AddCard from './views/AddCard.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  components:{Home, AddCard},
+  data(){return{
+    currentView:"home"
+  }}
+  
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+*{
+    font-family: 'Roboto', sans-serif;
 }
 </style>
