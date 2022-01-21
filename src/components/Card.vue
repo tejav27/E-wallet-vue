@@ -2,7 +2,7 @@
   <div>
     <div class="single-card" :style='{backgroundColor : cardInfo.cardColor}'>
       <section class="icons">
-        <button>{{ cardInfo.vendor }}</button>
+        <img v-bind:src="cardInfo.cardIcon" alt="icon">
         <div>
           <img :src="wifiIcon" alt="wifi" />
           <img :src="chipIcon" alt="chip" />
@@ -34,7 +34,7 @@ export default {
         validMonth: 11,
         validYear: 22,
       },
-          wifiIcon: require("../assets/wifi.svg"),
+        wifiIcon: require("../assets/wifi.svg"),
         chipIcon: require("../assets/chip.svg"),
     };
   },

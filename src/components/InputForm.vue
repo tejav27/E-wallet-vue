@@ -29,8 +29,8 @@
         min="2022"
       />
       <label for="input">Vendor</label>
-      <select v-model="cardInfo.vendor">
-        <option v-for="vendor in Vendors" :key="vendor.vName" v-on:click.self="cardInfo.cardColor = vendor.bgColor">
+      <select v-model="cardInfo.vendor" v-on:change="assignColor($event); assignIcon($event)">
+        <option v-for="vendor in Vendors" :key="vendor.bgColor" >
           {{ vendor.vName }}
         </option>
       </select>
@@ -52,17 +52,20 @@ export default {
         validYear: null,
       },
       Vendors: [
-        { bgColor: "red", vName: "bitcoin", vIcon: "" },
-        { bgColor: "yellow", vName: "blockChain", vIcon: "" },
-        { bgColor: "blue", vName: "evilCorp", vIcon: "" },
-        { bgColor: "green", vName: "ninjaBank", vIcon: "" },
+        { bgColor: "#FFAE34", vName: "bitcoin", vIcon:"/img/bitcoin.68939348.svg" },
+        { bgColor: "#8B58F9", vName: "blockChain", vIcon: "/img/blockchain.a26084d8.svg" },
+        { bgColor: "#F33355", vName: "evilCorp", vIcon: "/img/evil.6c4674fe.svg" },
+        { bgColor: "#222222", vName: "ninjaBank", vIcon: "/img/ninja.7a4c8780.svg" },
       ],
     };
   },
   methods:{
-    assignColor(color){
-      this.cardInfo.cardColor=color;
-      console.log(this.cardInfo.cardColor)
+    assignColor(event){
+      this.cardInfo.cardColor=this.Vendors.find(vendor=>vendor.vName==event.target.value).bgColor
+    },
+    assignIcon(event){
+      this.cardInfo.cardIcon=this.Vendors.find(vendor=>vendor.vName==event.target.value).vIcon
+      console.log(this.cardInfo.cardIcon)
     }
   },
   updated() {
@@ -73,7 +76,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 form {
   display: flex;
   flex-direction: column;
