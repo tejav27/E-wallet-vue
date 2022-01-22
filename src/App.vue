@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Home @changeView="currentView='addcard'" v-if="currentView=='home'"/>
-    <AddCard @changeView="currentView='home'" v-if="currentView=='addcard'"/>
+    <Home @changeView="currentView='addcard'" v-if="currentView=='home'" :sendNewCard="sendToList"/>
+    <AddCard @changeView="currentView='home'" v-if="currentView=='addcard'" @listNewCard="getData"/>
   </div>
 </template>
 
@@ -12,8 +12,17 @@ export default {
   name: 'App',
   components:{Home, AddCard},
   data(){return{
-    currentView:"home"
-  }}
+    currentView:"home",
+    sendToList:{}
+  }},
+  methods:{
+    getData(retrievedInfo){
+      this.sendToList={...retrievedInfo}
+    }
+  },
+  updated(){
+    this.sendToList
+  }
   
 }
 </script>
