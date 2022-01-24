@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1>Activecard</h1>
+      <h3>ACTIVE CARD</h3>
     <Card :retrieveActiveCard="activeCardDetails" />
+
   </div>
 </template>
 

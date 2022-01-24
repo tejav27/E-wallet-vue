@@ -56,17 +56,17 @@ export default {
       cardInfo: {
         vendor: "",
         cardColor: "",
-        cardIcon: null, 
+        cardIcon: "", 
         cardNumber: "",
         name: "",
         validMonth: null,
         validYear: null,
       },
       Vendors: [
-        { bgColor: "#FFAE34", vName: "Bitcoin", vIcon:"../assets/bitcoin.svg" },
-        { bgColor: "#8B58F9", vName: "BlockChain", vIcon: "/img/blockchain.a26084d8.svg" },
-        { bgColor: "#F33355", vName: "EvilCorp", vIcon: "/img/evil.6c4674fe.svg" },
-        { bgColor: "#222222", vName: "NinjaBank", vIcon: "/img/ninja.7a4c8780.svg" },
+        { bgColor: "#FFAE34", vName: "Bitcoin", vIcon:"bitcoin.svg" },
+        { bgColor: "#8B58F9", vName: "BlockChain", vIcon: "blockchain.svg" },
+        { bgColor: "#F33355", vName: "EvilCorp", vIcon: "evil.svg" },
+        { bgColor: "#222222", vName: "NinjaBank", vIcon: "ninja.svg" },
       ],
     };
   },
@@ -76,7 +76,6 @@ export default {
     },
     assignIcon(event){
       this.cardInfo.cardIcon=this.Vendors.find(vendor=>vendor.vName==event.target.value).vIcon
-      console.log(this.cardInfo.cardIcon)
     },
     sendnewCardInfo(){
       this.$emit("sendUpdate", { ...this.cardInfo });
