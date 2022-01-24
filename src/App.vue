@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home @changeView="currentView='addcard'" v-if="currentView=='home'" :sendNewCard="sendToList"/>
+    <Home @changeView="currentView='addcard'" v-if="currentView=='home'"  :listOfCards="listOfCards"/>
     <AddCard @changeView="currentView='home'" v-if="currentView=='addcard'" @listNewCard="getData"/>
   </div>
 </template>
@@ -42,15 +42,13 @@ export default {
         },
     ],
     currentView:"home",
-    sendToList:{}
   }},
   methods:{
     getData(retrievedInfo){
-      this.sendToList={...retrievedInfo}
-    }
+    this.listOfCards.push({...retrievedInfo})
+    },
   },
   updated(){
-    this.sendToList
   }
   
 }
@@ -63,5 +61,16 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 *{
     font-family: 'Roboto', sans-serif;
+}
+button{
+  border: darkcyan;
+  border-radius: 5px;
+  background-color: cadetblue;
+  color: #000;
+  padding: 15px 5px;
+}
+button:focus{
+  color: black;
+  background-color: cadetblue;
 }
 </style>

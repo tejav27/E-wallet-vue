@@ -1,7 +1,7 @@
 <template>
   <div>
       <h1>Home</h1>
-      <CardList :sendNew="sendNewCard"/>
+      <CardList :listOfCards="listOfCards"/>
       <button @click="$emit('changeView')">ADD A NEW CARD</button>
   </div>
 </template>
@@ -9,10 +9,9 @@
 <script>
 import CardList from '../components/CardList.vue'
 export default {
-  props:['sendNewCard'],
+  props:['listOfCards'],
   components:{CardList},
   updated(){
-    this.sendNewCard
   }
 }
 </script>
