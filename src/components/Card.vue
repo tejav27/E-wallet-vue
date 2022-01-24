@@ -73,6 +73,7 @@ export default {
   padding: 0px;
 }
 .single-card {
+  color: whitesmoke;
   text-align: center;
   margin-bottom: 2rem;
   width: 20rem;

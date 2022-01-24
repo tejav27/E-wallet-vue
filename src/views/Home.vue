@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Home</h1>
-    <ActiveCard :activeCardDetails="activeCardDetails" />
+    <ActiveCard :activeCardDetails="activeCardDetails" :firstCard="listOfCards[0]" @deleteCard="deleteCard"/>
     <CardList :listOfCards="listOfCards" @showActiveCard="activeCardInfo" />
     <button @click="$emit('changeView')">ADD A NEW CARD</button>
   </div>
@@ -22,6 +22,9 @@ export default {
     activeCardInfo(cardDetails) {
       this.activeCardDetails = { ...cardDetails };
     },
+    deleteCard(cardDetails){
+      this.$emit('deleteCard', {...cardDetails});
+    }
   },
 };
 </script>

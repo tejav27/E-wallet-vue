@@ -4,6 +4,7 @@
       @changeView="currentView = 'addcard'"
       v-if="currentView == 'home'"
       :listOfCards="listOfCards"
+      @deleteCard="deleteCard"
     />
     <AddCard
       @changeView="currentView = 'home'"
@@ -54,6 +55,7 @@ export default {
       currentView: "home",
       matchedCard: 0,
       showError: false,
+      index:null
     };
   },
   methods: {
@@ -68,7 +70,11 @@ export default {
     //   this.showError=true
     // }
     // },
-
+    deleteCard(cardDetails){
+      this.matchedCard = this.listOfCards.find(card => card.cardNumber == cardDetails.cardNumber)
+       this.index=this.listOfCards.indexOf(this.matchedCard)
+        this.listOfCards.splice(this.index,1)
+    },
     getData(retrievedInfo) {
       this.listOfCards.push({ ...retrievedInfo });
     },
@@ -98,13 +104,16 @@ export default {
   font-family: "Roboto", sans-serif;
 }
 button {
-  border: darkcyan;
+  border: black solid 2px;
   border-radius: 5px;
-  background-color: cadetblue;
-  color: #000;
+  background-color: white;
+  color: black;
+  font-size: 1rem;
+  font-weight: bolder;
   padding: 15px 5px;
+  margin-bottom: 30px;
 }
-button:focus {
+button:hover {
   color: black;
   background-color: cadetblue;
 }
