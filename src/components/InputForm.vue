@@ -45,7 +45,6 @@
         </option>
       </select>
       <button type="reset">Reset</button>
-      <button type="submit" @click="sendnewCardInfo">Add Card</button>
     </form>
   </div>
 </template>
@@ -87,7 +86,11 @@ export default {
     newCardnumber(){
       return this.cardInfo.cardNumber
         }
-  }
+  },
+   updated() {
+    if(this.cardInfo)
+      this.$emit("sendUpdate", { ...this.cardInfo });
+  },
 };
 </script>
 

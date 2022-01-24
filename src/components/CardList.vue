@@ -1,10 +1,10 @@
 <template>
   <div class="list-style">
     <Card class="list-item"
+      @click.native="showActiveCard(listItem)"
       v-for="listItem in listOfCards"
       :key="listItem.cardNumber"
       :showCard="{ ...listItem }"
-      @click="cardclicked"
     />
   </div>
 </template>
@@ -18,33 +18,9 @@ export default {
     return {
     };
   },
-  // watch:{
-  //   sendNew: function (){ 
-  //     console.log(++this.count)
-  //         console.log('helloooo')
-  //         this.list.push({...this.sendNew})
-  //   }
-  // },
-  updated(){
-      // this.list
-      // this.sendNew
-      // console.log(this.sendNew)
-      // console.log(this.list)
-      // localStorage.setItem('e-cards', JSON.stringify(this.list))
-  },
-  mounted(){
-      // // this.list=JSON.parse(localStorage.getItem('e-cards'))
-          // if(!localStorage.getItem('e-cards')){
-          //   localStorage.setItem('e-cards',JSON.stringify(this.list))
-          // }
-          // else{
-          //   this.list=JSON.parse(localStorage.getItem('e-cards'))
-          // }
-
-  },
   methods:{
-    cardclicked(){
-      console.log('clikeddddd card')
+    showActiveCard(cardDetails){
+      this.$emit('showActiveCard',{...cardDetails})
     }
   }
 };

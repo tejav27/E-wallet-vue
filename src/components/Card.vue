@@ -37,17 +37,29 @@ export default {
       chipIcon: require("../assets/chip.svg"),
     };
   },
-  props: ["updateCardData", "showCard"],
+  props: ["updateCardData", "showCard", "retrieveActiveCard"],
   watch: {
     updateCardData() {
       this.cardInfo = { ...this.updateCardData };
     },
+    retrieveActiveCard(){
+      this.cardInfo = { ...this.retrieveActiveCard};
+    }
   },
   mounted() {
     if(this.showCard){
       this.cardInfo = { ...this.showCard };
     }
+    // if(!this.retrieveActiveCard){
+    //   this.cardInfo = { ...this.retrieveActiveCard};
+    // }
   },
+  // updated(){
+  //   if(this.retrieveActiveCard){
+  //     this.cardInfo = { ...this.retrieveActiveCard};
+  //     console.log('retrieveddddd')
+  //   }
+  // }
 };
 </script>
 
@@ -59,8 +71,7 @@ export default {
 }
 .single-card {
   text-align: center;
-  margin: 5rem;
-  margin-bottom: 5px;
+  margin-bottom: 2rem;
   width: 20rem;
   height: 15rem;
   border: solid gray 2px;

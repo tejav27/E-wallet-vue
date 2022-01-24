@@ -18,7 +18,11 @@ components:{Card, InputForm},
 methods:{
   retrieveData(cardInfo){
     this.retrievedInfo= {...cardInfo};
-  }
+  },
+  // validateAndSend(){
+  //   this.retrievedInfo.cardNumber
+  //   if()
+  // }
 },
 }
 </script>

@@ -2,6 +2,7 @@
   <div id="app">
     <Home @changeView="currentView='addcard'" v-if="currentView=='home'"  :listOfCards="listOfCards"/>
     <AddCard @changeView="currentView='home'" v-if="currentView=='addcard'" @listNewCard="getData"/>
+    <p v-if="showError">Same Card Number..</p>
   </div>
 </template>
 
@@ -42,14 +43,44 @@ export default {
         },
     ],
     currentView:"home",
+    matchedCard:0,
+    showError:false
   }},
   methods:{
+    // getData(retrievedInfo){
+    // this.matchedCard = this.listOfCards.filter(card => card.cardNumber == this.retrievedInfo.cardNumber)
+    // console.log(this.matchedCard)
+    // if(this.matchedCard==0){
+    //   this.listOfCards.push({...retrievedInfo})
+    //   this.showError=false
+    // }
+    // else{
+    //   this.showError=true
+    // }
+    // },
+
     getData(retrievedInfo){
-    this.listOfCards.push({...retrievedInfo})
-    },
-  },
+      this.listOfCards.push({...retrievedInfo})
+    }
+
+
+},
   updated(){
+  },
+   mounted(){
+          if(!localStorage.getItem('e-cards')){
+            localStorage.setItem('e-cards',JSON.stringify(this.listOfCards))
+          }
+          else{
+            this.listOfCards=JSON.parse(localStorage.getItem('e-cards'))
+          }
+
+  },
+  watch: {
+  listOfCards: function () {
+      localStorage.setItem('e-cards', JSON.stringify(this.listOfCards))
   }
+}
   
 }
 </script>
