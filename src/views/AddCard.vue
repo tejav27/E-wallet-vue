@@ -23,6 +23,10 @@ methods:{
 }
 </script>
 
-<style>
-
+<style scoped>
+div{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
 </style>

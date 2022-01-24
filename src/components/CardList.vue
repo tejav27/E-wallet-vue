@@ -4,6 +4,7 @@
       v-for="listItem in list"
       :key="listItem.vendor"
       :showCard="{ ...listItem }"
+      @click="cardclicked"
     />
   </div>
 </template>
@@ -46,17 +47,25 @@ export default {
       ],
     };
   },
+  // watch:{
+  //   sendNew: function (){ 
+  //     console.log(++this.count)
+  //         console.log('helloooo')
+  //         this.list.push({...this.sendNew})
+  //   }
+  // },
   updated(){
-      this.list
-      this.sendNew
-      console.log(this.sendNew)
-      console.log(this.list)
-      localStorage.setItem('e-cards', JSON.stringify(this.list))
+      // this.list
+      // this.sendNew
+      // console.log(this.sendNew)
+      // console.log(this.list)
+      // localStorage.setItem('e-cards', JSON.stringify(this.list))
   },
   mounted(){
       if(this.sendNew.cardNumber){
           this.list.push({...this.sendNew})
       }
+      // // this.list=JSON.parse(localStorage.getItem('e-cards'))
           // if(!localStorage.getItem('e-cards')){
           //   localStorage.setItem('e-cards',JSON.stringify(this.list))
           // }
@@ -65,15 +74,34 @@ export default {
           // }
 
   },
+  methods:{
+    cardclicked(){
+      console.log('clikeddddd card')
+    }
+  }
 };
 </script>
 
-<style scoped>
-/* .list-style{
-    position: absolute;
-} */
-/* .list-item{
+<style lang="scss">
+*{
+  box-sizing: border-box;
+}
+@for $i from 1 through 8 {
+  .list-item:nth-child(#{$i}n) {
     position: relative;
-    transform: translateY(-20%);
-} */
+    z-index: calc($i + 4);
+  }
+}
+.list-style{
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  margin-bottom: 20px;
+}
+.list-item:not(:last-child){
+  opacity: 1;
+}
+.list-item:not(:first-child){
+  margin-top: -15rem;
+}
 </style>

@@ -54,15 +54,17 @@ export default {
 <style scoped>
 *{
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 .single-card {
   text-align: center;
-  margin: auto;
-  margin-bottom: 50px;
-  width: 450px;
-  height: 300px;
+  margin: 5rem;
+  margin-bottom: 5px;
+  width: 20rem;
+  height: 15rem;
   border: solid gray 2px;
-  border-radius: 10px;
+  border-radius: 1rem;
   box-shadow: black 2px;
 }
 .icons {
@@ -75,6 +77,7 @@ export default {
   flex-direction: column;
 }
 .details {
+  margin-top: 10px;
   display: flex;
   justify-content: space-around;
 }
