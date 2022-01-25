@@ -3,7 +3,7 @@
       <h1>Add Card</h1>
       <Card :updateCardData="this.retrievedInfo" />
       <InputForm @sendUpdate="retrieveData"/>
-      <button @click="$emit('changeView'); $emit('listNewCard',{...retrievedInfo})">ADD CARD</button>
+      <button @click="$emit('changeView'); $emit('listNewCard',{...retrievedInfo}); validateAndSend(retrievedInfo)">ADD CARD</button>
   </div>
 </template>
 
@@ -19,10 +19,12 @@ methods:{
   retrieveData(cardInfo){
     this.retrievedInfo= {...cardInfo};
   },
-  // validateAndSend(){
-  //   this.retrievedInfo.cardNumber
-  //   if()
-  // }
+  validateAndSend(retrievedInfo){
+    retrievedInfo.cardNumber
+    if(retrievedInfo.cardNumber.toString().length != 16){
+      console.log("errorrr should contain 16 digits")
+    }
+  }
 },
 }
 </script>

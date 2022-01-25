@@ -74,6 +74,7 @@ export default {
 }
 .single-card {
   color: whitesmoke;
+  background-color: #FFAE34;
   text-align: center;
   margin-bottom: 2rem;
   width: 20rem;
