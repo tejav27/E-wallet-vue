@@ -24,32 +24,14 @@ export default {
   data() {
     return {
       listOfCards: [
-        {
-          vendor: "ninja",
-          cardColor: "#222222",
-          cardIcon: "ninja.svg",
-          cardNumber: "5768906789",
-          name: "fghjklghjk",
-          validMonth: 11,
-          validYear: 22,
-        },
-        {
+         {
           vendor: "bitcoin",
           cardColor: "#FFAE34",
           cardIcon: "bitcoin.svg",
-          cardNumber: "3456789",
-          name: "xfcgvjhbnkml",
+          cardNumber: "3456 7891 5467 3425",
+          name: "Kimberly Park",
           validMonth: 12,
           validYear: 24,
-        },
-        {
-          vendor: "blockchain",
-          cardColor: "#8B58F9",
-          cardIcon: "blockchain.svg",
-          cardNumber: "122345678934567",
-          name: "dfguhijopkedrtfgyuhjif",
-          validMonth: 10,
-          validYear: 23,
         },
       ],
       currentView: "home",
@@ -80,7 +62,7 @@ export default {
     },
   },
   updated() {},
-  mounted() {
+  created() {
     if (!localStorage.getItem("e-cards")) {
       localStorage.setItem("e-cards", JSON.stringify(this.listOfCards));
     } else {
@@ -98,6 +80,9 @@ export default {
 <style lang="scss">
 #app {
   text-align: center;
+  border: 2px solid rgb(117, 112, 112);
+  border-radius: 6px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6) ;
 }
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 * {

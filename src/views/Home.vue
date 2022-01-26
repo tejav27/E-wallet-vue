@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <h1>Home</h1>
     <ActiveCard :activeCardDetails="activeCardDetails" :firstCard="listOfCards[0]" @deleteCard="deleteCard"/>
     <CardList :listOfCards="listOfCards" @showActiveCard="activeCardInfo" />
@@ -29,5 +29,5 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 </style>

@@ -3,12 +3,12 @@
     <div class="single-card" :style="{ backgroundColor: cardInfo.cardColor }">
       <section class="icons">
         <div class="two-icons">
-          <img :src="wifiIcon" alt="wifi" />
-          <img :src="chipIcon" alt="chip" />
+          <img src="../assets/wifi.svg" alt="wifi" />
+          <img src="../assets/chip.svg" alt="chip" />
         </div>
-        <img v-if="cardIconImg" :src="cardIconImage" alt="icon" />
+        <img :src="cardIconImage" alt="icon" />
       </section>
-      <h3>{{ cardInfo.cardNumber }}</h3>
+      <h3>{{cardInfo.cardNumber }}</h3>
       <section class="details">
         <div>
           <h5>CARDHOLDER NAME</h5>
@@ -25,42 +25,30 @@
 
 <script>
 export default {
-  data() {
-    return {
-      cardInfo: {
-        cardNumber: "XXXX XXXX XXXX XXXX",
-        name: "Firstname Lastname",
-        validMonth: 11,
-        validYear: 22        
-      },
-      cardIconImg: null,
-      wifiIcon: require("../assets/wifi.svg"),
-      chipIcon: require("../assets/chip.svg"),
-    };
-  },
-  props: ["updateCardData", "showCard", "retrieveActiveCard"],
-  watch: {
-    updateCardData() {
-      this.cardInfo = { ...this.updateCardData };
-      this.cardIconImg = this.updateCardData.cardIcon;
-    },
-    retrieveActiveCard() {
-      this.cardInfo = { ...this.retrieveActiveCard };
-      this.cardIconImg = this.retrieveActiveCard.cardIcon;
-    },
-  },
-  mounted() {
-    if (this.showCard) {
-      this.cardInfo = { ...this.showCard };
-      this.cardIconImg = this.showCard.cardIcon;
-    }
-  },
+  props: ["cardInfo"],
   computed: {
     cardIconImage() {
-      if(this.cardIconImg) {
-        return require("../assets/" + this.cardInfo.cardIcon);
+      if (this.cardInfo.vendor) {
+        return require("../assets/" + this.cardInfo.vendor + ".svg");
       }
-      return ''
+      return "";
+    },
+     Number(){
+      if(this.cardInfo.cardNumber){
+        let len = this.cardInfo.cardNumber.length;
+        let newNumber = 0;
+        for (let i = 0; i < len; i++) {
+          if (i % 4 === 0) {
+            newNumber = newNumber + " " + this.cardNumber[i]
+          } else {
+            newNumber += this.cardNumber[i]
+          }
+        }
+        return newNumber
+        // let c1 = x.substring(0,4), c2 = x.substring(4,8), c3 = x.substring(8,12), c4 = x.substring(12,16) ;
+        // return c1 + " " + c2 + " " + c3 + " " + c4; 
+      }
+      return ""
     },
   },
 };
@@ -74,14 +62,14 @@ export default {
 }
 .single-card {
   color: whitesmoke;
-  background-color: #FFAE34;
+  background-color: #ffae34;
   text-align: center;
   margin-bottom: 2rem;
   width: 20rem;
   height: 15rem;
   border: solid gray 2px;
   border-radius: 1rem;
-  box-shadow: 2px 2px 2px rgba(0,0,0,0.4) inset;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4) inset;
 }
 .icons {
   margin: 7%;

@@ -4,7 +4,7 @@
       @click.native="showActiveCard(listItem)"
       v-for="listItem in listOfCards"
       :key="listItem.cardNumber"
-      :showCard="{ ...listItem }"
+      :cardInfo="{ ...listItem }"
     />
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 *{
   box-sizing: border-box;
 }
-@for $i from 1 through 8 {
+@for $i from 1 through 10 {
   .list-item:nth-child(#{$i}n) {
     position: relative;
     z-index: calc($i + 4);

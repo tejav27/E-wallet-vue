@@ -1,8 +1,8 @@
 <template>
   <div>
       <h3>ACTIVE CARD</h3>
-    <Card v-if="activeCardDetails!=null" :retrieveActiveCard="activeCardDetails" />
-    <Card v-else :retrieveActiveCard="firstCard" />
+    <Card  v-if="showActiveCard" :cardInfo="showActiveCard" />
+    <Card v-else :cardInfo="firstcard"/>
     <button @click="deleteCard">Delete Card</button>
   </div>
 </template>
@@ -10,15 +10,27 @@
 <script>
 import Card from "./Card.vue";
 export default {
+    data(){return{
+        showActiveCard:{...this.activeCardDetails}
+    }},
   components: { Card },
-  props: ["activeCardDetails", 'firstCard'],
-  updated() {
-    this.activeCardDetails;
+  props: ["activeCardDetails", "firstCard"],
+  watch: {
+      activeCardDetails(){
+          this.showActiveCard = this.activeCardDetails;
+      }
+  },
+  mounted(){
+    this.showActiveCard = this.firstCard
   },
   methods:{
       deleteCard(){
-          this.$emit('deleteCard',{...this.activeCardDetails})
-      }
+          this.$emit('deleteCard',{...this.showActiveCard})
+      },
+      showFirstCard(){
+          this.$emit('someEvent')
+
+}
   }
 };
 </script>
