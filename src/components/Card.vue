@@ -8,7 +8,7 @@
         </div>
         <img :src="cardIconImage" alt="icon" />
       </section>
-      <h3>{{cardInfo.cardNumber }}</h3>
+      <h3>{{ formattedCardNumber }}</h3>
       <section class="details">
         <div>
           <h5>CARDHOLDER NAME</h5>
@@ -33,22 +33,13 @@ export default {
       }
       return "";
     },
-     Number(){
-      if(this.cardInfo.cardNumber){
-        let len = this.cardInfo.cardNumber.length;
-        let newNumber = 0;
-        for (let i = 0; i < len; i++) {
-          if (i % 4 === 0) {
-            newNumber = newNumber + " " + this.cardNumber[i]
-          } else {
-            newNumber += this.cardNumber[i]
-          }
-        }
-        return newNumber
-        // let c1 = x.substring(0,4), c2 = x.substring(4,8), c3 = x.substring(8,12), c4 = x.substring(12,16) ;
-        // return c1 + " " + c2 + " " + c3 + " " + c4; 
+    formattedCardNumber() {
+      if (this.cardInfo.cardNumber) {
+        let x = this.cardInfo.cardNumber.toString();
+        let c1 = x.substring(0,4), c2 = x.substring(4,8), c3 = x.substring(8,12), c4 = x.substring(12,16) ;
+        return c1 + " " + c2 + " " + c3 + " " + c4;
       }
-      return ""
+      return "xxxx xxxx xxxx xxxx";
     },
   },
 };

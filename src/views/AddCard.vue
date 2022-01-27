@@ -41,6 +41,7 @@ export default {
       retrievedInfo.cardNumber;
       if (retrievedInfo.cardNumber.toString().length != 16) {
         console.log("errorrr should contain 16 digits");
+        
       }
     },
   },

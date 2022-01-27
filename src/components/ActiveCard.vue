@@ -26,11 +26,8 @@ export default {
   methods:{
       deleteCard(){
           this.$emit('deleteCard',{...this.showActiveCard})
-      },
-      showFirstCard(){
-          this.$emit('someEvent')
-
-}
+          this.showActiveCard = this.firstCard
+      }
   }
 };
 </script>
@@ -41,5 +38,8 @@ div {
   flex-direction: column;
   place-items: center;
   margin-bottom: 20px;
+}
+button{
+    margin-top: -15px;
 }
 </style>
