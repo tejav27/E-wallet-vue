@@ -10,8 +10,8 @@
       @changeView="currentView = 'home'"
       v-if="currentView == 'addcard'"
       @listNewCard="getData"
+      :listOfCards=listOfCards
     />
-    <p v-if="showError">Same Card Number..</p>
   </div>
 </template>
 
@@ -28,30 +28,17 @@ export default {
           vendor: "bitcoin",
           cardColor: "#FFAE34",
           cardIcon: "bitcoin.svg",
-          cardNumber: "3456 7891 5467 3425",
+          cardNumber: "3456789154673425",
           name: "Kimberly Park",
           validMonth: 12,
           validYear: 24,
-        },
+        }
       ],
       currentView: "home",
-      matchedCard: 0,
-      showError: false,
       index:null
     };
   },
   methods: {
-    // getData(retrievedInfo){
-    // this.matchedCard = this.listOfCards.filter(card => card.cardNumber == this.retrievedInfo.cardNumber)
-    // console.log(this.matchedCard)
-    // if(this.matchedCard==0){
-    //   this.listOfCards.push({...retrievedInfo})
-    //   this.showError=false
-    // }
-    // else{
-    //   this.showError=true
-    // }
-    // },
     deleteCard(cardDetails){
       this.matchedCard = this.listOfCards.find(card => card.cardNumber == cardDetails.cardNumber)
        this.index=this.listOfCards.indexOf(this.matchedCard)
@@ -61,7 +48,6 @@ export default {
       this.listOfCards.push({ ...retrievedInfo });
     },
   },
-  updated() {},
   created() {
     if (!localStorage.getItem("e-cards")) {
       localStorage.setItem("e-cards", JSON.stringify(this.listOfCards));
@@ -79,6 +65,8 @@ export default {
 
 <style lang="scss">
 #app {
+  max-width: 400px;
+  margin: auto;   
   text-align: center;
   border: 2px solid rgb(117, 112, 112);
   border-radius: 6px;
@@ -95,7 +83,7 @@ button {
   color: black;
   font-size: 1rem;
   font-weight: bolder;
-  padding: 15px 5px;
+  padding: 15px 35px;
   margin-bottom: 30px;
 }
 button:hover {

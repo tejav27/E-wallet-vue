@@ -6,7 +6,7 @@
           <img src="../assets/wifi.svg" alt="wifi" />
           <img src="../assets/chip.svg" alt="chip" />
         </div>
-        <img :src="cardIconImage" alt="icon" />
+        <img :src="cardIconImage" alt="" />
       </section>
       <h3>{{ formattedCardNumber }}</h3>
       <section class="details">
@@ -53,10 +53,10 @@ export default {
 }
 .single-card {
   color: whitesmoke;
-  background-color: #ffae34;
+  background-color: #3D3D3D;
   text-align: center;
   margin-bottom: 2rem;
-  width: 20rem;
+  width: 20rem  ;
   height: 15rem;
   border: solid gray 2px;
   border-radius: 1rem;

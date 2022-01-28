@@ -3,6 +3,8 @@
     <form>
       <label for="card-number">CARD NUMBER</label>
       <input
+      maxlength="16"
+      minlength="16"
         type="number"
         name="card-number"
         id="card-number"
@@ -22,34 +24,17 @@
       <div class="month-year">
         <div class="month">
         <label for="month">MONTH</label>
-          <!-- <input
-            type="number"
-            name="month"
-            id="month"
-            placeholder="Month"
-            v-model="cardInfo.validMonth"
-            min="1"
-            max="12"
-          /> -->
           <select
         v-model="cardInfo.validMonth"
         id="month"
       >
-        <option v-for="month in 12" :key="month">
+        <option v-for="month in months" :key="month">
           {{ month }}
         </option>
       </select>
         </div>
         <div class="year">
           <label for="year">YEAR</label>
-          <!-- <input
-            type="number"
-            name="year"
-            id="year"
-            placeholder="Year"
-            v-model="cardInfo.validYear"
-            min="22"
-          /> -->
           <select
         v-model="cardInfo.validYear"
         id="year"
@@ -91,6 +76,7 @@ export default {
         validMonth: null,
         validYear: null,
       },
+      months:["01","02","03","04","05","06","07","08","09","10","11","12"],
       years:[22, 23, 24, 25, 26, 27, 28],
       Vendors: [
         { bgColor: "#FFAE34", vName: "bitcoin", vIcon: "bitcoin.svg" },
@@ -102,7 +88,6 @@ export default {
   },
   methods: {
     assignColor(event) {
-      console.log(this.Number);
       this.cardInfo.cardColor = this.Vendors.find(
         (vendor) => vendor.vName == event.target.value
       ).bgColor;
@@ -187,9 +172,11 @@ select{
   option{
     place-items: center;
     color: whitesmoke;
-    background-color: rgb(31, 45, 54);
+    background-color: rgb(18, 23, 26);
     &:hover{
-      background-color: rgb(10, 56, 109)
+      background-color: rgb(10, 56, 109);
+      color:black;
+      font-size: bolder;
     }
   }
 }
@@ -203,7 +190,7 @@ button {
     padding: 15px 40px;
     color: rgb(204, 13, 13);
     background-color: white;
-    font-size: 1.25rem;
+    font-weight: 900;
 }
 
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <ActiveCard :activeCardDetails="activeCardDetails" :firstCard="listOfCards[0]" @deleteCard="deleteCard"/>
+    <h1 class="heading">E-WALLET</h1>
+    <ActiveCard :activeCardDetails="activeCardDetails" :listOfCards="listOfCards" @deleteCard="deleteCard"/>
     <CardList :listOfCards="listOfCards" @showActiveCard="activeCardInfo" />
     <button @click="$emit('changeView')">ADD A NEW CARD</button>
   </div>
@@ -30,4 +30,7 @@ export default {
 </script>
 
 <style scoped>
+.heading{
+  font-weight:bolder;
+}
 </style>
