@@ -43,6 +43,8 @@ export default {
     },
     validateAndSend(retrievedInfo) {
       this.errorsList = [];
+      this.noError = true;
+      this.showError = false;
       retrievedInfo.cardNumber;
       if (retrievedInfo.cardNumber.toString().length != 16) {
         this.errorsList.push("Card number should contain 16 digits");
